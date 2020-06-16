@@ -9,9 +9,9 @@ const App = () => {
   return (
     <div className="App">
       <h1>Welcome to Reviewer</h1>
-      <button class="btn btn-primary" style={{margin: 10}} onClick = { () => setRoute('upload') }>Upload a new Publication</button>
+      <button className="btn btn-primary" style={{margin: 10}} onClick = { () => setRoute('upload') }>Upload a new Publication</button>
       <br />
-      <button class="btn btn-primary" style={{margin: 10}} onClick = { () => setRoute('view') }>View your Publications</button>
+      <button className="btn btn-primary" style={{margin: 10}} onClick = { () => setRoute('view') }>View your Publications</button>
       <UploadSection />
       <ViewSection />
     </div>
