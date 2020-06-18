@@ -5,18 +5,19 @@ import './UploadStyle.css';
 const UploadSection = () => {
 	const [ file,setFile ] = useState(null);
 	let onChangeHandler = (event) => {
-		setFile(event.target.files[0]);
+		setFile(event.target.files);
 	}
 	let onClickHandler = () => {
     const data = new FormData();
-    data.append('file', file);
-		axios.post("http://localhost:8000/upload", data, { // receive two parameter endpoint url ,form data 
+    for(let i = 0; i < file.length; i++) {
+      data.append('file', file[i]);
+    }
+	  axios.post("http://localhost:8000/upload", data, { 
 	  })
-	  .then(res => { // then print response status
-	    console.log(res.statusText);
-	  });
+		.then(res => {
+		    console.log(res.statusText);
+		});
 	}	
-	
 
 	return (
 		<div>
@@ -26,7 +27,7 @@ const UploadSection = () => {
 		      <form method="post" action="#" id="#">
             <div className="form-group files">
               <label>Upload Your File </label>
-              <input type="file" name="file" onChange={(event) => onChangeHandler(event)}/>
+              <input type="file" style={{cursor: 'pointer'}} name="file" multiple onChange={onChangeHandler}/>
             </div>
           </form>
 					<button type="button" class="btn btn-success btn-block" onClick={onClickHandler}>Upload</button>
