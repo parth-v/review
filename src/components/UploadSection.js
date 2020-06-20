@@ -20,7 +20,7 @@ const UploadSection = () => {
     for(let i = 0; i < file.length; i++) {
       data.append('file', file[i]);
     }
-	  axios.post("http://localhost:8000/upload", data, { 
+	  axios.post("/upload", data, { 
 	  	onUploadProgress: ProgressEvent => {
         setLoaded(ProgressEvent.loaded / ProgressEvent.total*100);
       }

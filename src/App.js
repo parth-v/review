@@ -12,9 +12,11 @@ const App = () => {
     <Router>
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <a href="/" className="navbar-brand">
-            Reviewer
-          </a>
+          <li className="navbar-brand">
+            <Link to={"/"} className="nav-link">
+              Reviewer
+            </Link>            
+          </li>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to={"/upload"} className="nav-link">

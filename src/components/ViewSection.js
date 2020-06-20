@@ -3,11 +3,9 @@ import axios from '../api/reviewApi';
 
 const ViewSection = () => {
 	const [papers, setPapers] = useState([]);
-  // const [currentTutorial, setCurrentTutorial] = useState(null);
-  // const [currentIndex, setCurrentIndex] = useState(-1);
-  // const [searchTitle, setSearchTitle] = useState("");
+
   useEffect(() => {
-  	axios.get("http://localhost:8000/view")
+  	axios.get("/view")
 		.then(res => { 
     	setPapers(res.data);
 		})
@@ -26,9 +24,16 @@ const ViewSection = () => {
 		            className={
 		              "list-group-item"
 		            }
+		            style = {{cursor: 'pointer'}}
 		            onClick={ () => {
-		            	axios.get(`http://localhost:8000/download?name=${paper}`)
+		            	axios.get(`/download?name=${paper}`)
 										.then(res => { 
+											const url = window.URL.createObjectURL(new Blob([res.data]));
+										  const link = document.createElement('a');
+										  link.href = url;
+										  link.setAttribute('download', paper.split('-').pop());
+										  document.body.appendChild(link);
+										  link.click();
 											console.log('File Downloaded!');
 										})
 										.catch(err => { 
