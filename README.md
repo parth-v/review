@@ -1,3 +1,5 @@
+A peer review app where users and upload their research papers which are further reviewed by the respective mentors and experts!
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
