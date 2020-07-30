@@ -1,8 +1,12 @@
 import React from 'react';
+import fermat from '../img/fermat.jpg';
 
 const HomeSection = () => {
 	return (
-		<h1 className="text-center">Welcome to Reviewer</h1>
+		<div className="text-center">
+			<h1 >Welcome to E-Fermat</h1>
+			<img src={fermat} alt="fermat"/>
+		</div>
 	);
 };
 
