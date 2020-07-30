@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../api/reviewApi';
+import { Spinner } from 'reactstrap';
 
 const ViewSection = () => {
 	const [papers, setPapers] = useState([]);
@@ -13,10 +14,17 @@ const ViewSection = () => {
 		  console.log('Failed to fetch file!');
 		})
   }, []);
+
 	return (
 		<div>
 			<h2 className="text-center">Your submitted Publications!</h2>
-	    {
+	    { !papers.length ? 
+	    	(
+	    		<div className="text-center">
+	    			<Spinner color="primary" style={{ marginTop:'1rem', width: '3rem', height: '3rem' }} type="grow" />
+	    		</div>
+	    	) :
+	    	(
 	    	<ul className="list-group">
 		      {papers &&
 		        papers.map((paper, index) => (
@@ -46,6 +54,7 @@ const ViewSection = () => {
 		          </li>
 		        ))}
 		    </ul>
+		    )
 	 	  }
 	  </div>
 	);
