@@ -16,6 +16,9 @@ const UploadSection = () => {
 	}
 
 	let onClickHandler = () => {
+		if(!file){
+			return; 
+		}
     const data = new FormData();
     for(let i = 0; i < file.length; i++) {
       data.append('file', file[i]);

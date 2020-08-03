@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -36,13 +37,20 @@ const App = () => {
           </div>
         </nav>
 
-        <div className="container mt-3">
+        <div className="container mt-3" style={{marginBottom: '20px'}}>
           <Switch>
             <Route exact path="/" component={HomeSection} />
             <Route path="/upload" component={UploadSection} />
             <Route path="/view" component={ViewSection} />
           </Switch>
         </div>
+        
+        <footer>
+          <div className="text-center bg-secondary" style={{paddingTop: '10px',height: '75px'}}>
+            Terms & Conditions
+            © E-Fermat 2020
+          </div>
+        </footer>
       </div>
     }
     </Router>
