@@ -8,6 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const UploadSection = () => {
 	const [ file,setFile ] = useState(null);
 	const [ loaded,setLoaded ] = useState(0);
+	const [ name, setName] = useState('');
+	const [ err, setErr ] = useState('');
 	
 	let onChangeHandler = event => {
 		if(maxSelectFile(event) && checkMimeType(event) && checkFileSize(event)){
@@ -16,13 +18,14 @@ const UploadSection = () => {
 	}
 
 	let onClickHandler = () => {
-		if(!file){
-			return; 
+		if(!file || !name){
+			return setErr("Enter all details!"); 
 		}
     const data = new FormData();
     for(let i = 0; i < file.length; i++) {
       data.append('file', file[i]);
     }
+
 	  axios.post("/upload", data, { 
 	  	onUploadProgress: ProgressEvent => {
         setLoaded(ProgressEvent.loaded / ProgressEvent.total*100);
@@ -30,6 +33,7 @@ const UploadSection = () => {
 	  })
 		.then(res => { 
     	toast.success('File uploaded successfully!');
+    	setErr('');
 		})
 		.catch(err => { 
 		  toast.error('Failed to upload file!');
@@ -68,7 +72,7 @@ const UploadSection = () => {
 
 	let checkFileSize = event => {
 	  let files = event.target.files;
-	  let size = 5e+6;								//5 mb max file size 
+	  let size = 15e+6;								//15 mb max file size 
 	  let err = ""; 
 	  for (let i = 0; i < files.length; i++) {
 	  	if (files[i].size > size) {
@@ -83,9 +87,17 @@ const UploadSection = () => {
 
 	return (
 		<div className="text-center">
-			<h2>Upload a New File</h2>
+			<h2>Upload a New Article</h2>
+			<label className="m-2"> Article Title: </label>
+			<input 
+				onChange = {e => setName(e.target.value)}
+				value = {name}
+				placeholder = "Article Name"
+				type = "text"
+			/>
+			
 			<div className="container d-flex justify-content-center">
-				<div style={{width: '40%'}}>
+				<div style={{width: '80%'}}>
 		      <form method="post" action="#" id="#">
             <div className="form-group files">
               <input type="file" style={{cursor: 'pointer'}} accept=".pdf, .docx, .doc" name="file" multiple onChange={onChangeHandler}/>
@@ -96,6 +108,9 @@ const UploadSection = () => {
 					<button type="button" style={{marginTop: 10}} className="btn btn-success btn-block" onClick={onClickHandler}>Upload</button>
 				</div>
 			</div>
+			{
+				err && <p className="text-danger">{err}</p>
+			}
 		</div>
 	);
 };
