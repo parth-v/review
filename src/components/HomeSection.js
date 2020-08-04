@@ -1,6 +1,6 @@
 import React from 'react';
 import fermat from '../img/fermat.jpg';
-import ArticleSection from './ArticleSection';
+//import ArticleSection from './ArticleSection';
 
 const HomeSection = () => {
 	return (
