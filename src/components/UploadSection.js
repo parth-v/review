@@ -10,6 +10,7 @@ const UploadSection = () => {
 	const [ loaded,setLoaded ] = useState(0);
 	const [ name, setName] = useState('');
 	const [ err, setErr ] = useState('');
+	const [ abstract, setAbstract ] = useState('');
 	
 	let onChangeHandler = event => {
 		if(maxSelectFile(event) && checkMimeType(event) && checkFileSize(event)){
@@ -18,13 +19,15 @@ const UploadSection = () => {
 	}
 
 	let onClickHandler = () => {
-		if(!file || !name){
+		if(!file || !name || !abstract){
 			return setErr("Enter all details!"); 
 		}
     const data = new FormData();
     for(let i = 0; i < file.length; i++) {
       data.append('file', file[i]);
     }
+    data.append('name', name);
+    data.append('abstract', abstract);
 
 	  axios.post("/upload", data, { 
 	  	onUploadProgress: ProgressEvent => {
@@ -86,16 +89,29 @@ const UploadSection = () => {
 	}
 
 	return (
-		<div className="text-center">
-			<h2>Upload a New Article</h2>
-			<label className="m-2"> Article Title: </label>
-			<input 
-				onChange = {e => setName(e.target.value)}
-				value = {name}
-				placeholder = "Article Name"
-				type = "text"
-			/>
-			
+		<div>
+			<h2 className="text-center">Upload a New Article</h2>
+			<div className="form-group">
+				<label>Article Name: </label>
+				<input 
+					className="form-control"
+					onChange = {e => setName(e.target.value)}
+					value = {name}
+					placeholder = "Article Name"
+					type = "text"
+				/>
+			</div>
+			<div className="form-group">
+				<label > Article Abstract: </label>
+				<textarea 
+					className="form-control"
+	        onChange={e => setAbstract(e.target.value)}
+	        value={abstract}
+	        placeholder="Article Abstract"
+	        rows="5"
+	      />
+	    </div>
+			<p className="text-center">Upload Files: </p>
 			<div className="container d-flex justify-content-center">
 				<div style={{width: '80%'}}>
 		      <form method="post" action="#" id="#">
@@ -109,7 +125,7 @@ const UploadSection = () => {
 				</div>
 			</div>
 			{
-				err && <p className="text-danger">{err}</p>
+				err && <p className="text-danger text-center m-3">{err}</p>
 			}
 		</div>
 	);
