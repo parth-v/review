@@ -20,8 +20,8 @@ const TopNav = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to={"/view"} className="nav-link">
-            View
+          <Link to={"/articles"} className="nav-link">
+            Articles
           </Link>
         </li>
         </ul>

@@ -4,8 +4,9 @@ import React from 'react';
 import './App.css';
 import { Switch, Route } from "react-router-dom";
 import UploadSection from './components/UploadSection';
-import ViewSection from './components/ViewSection';
+import ArticleSection from './components/ArticleSection';
 import HomeSection from './components/HomeSection';
+import ArticleDetail from './components/ArticleDetail';
 import TopNav from './components/TopNav';
 import Footer from './components/Footer';
 
@@ -17,7 +18,8 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={HomeSection} />
             <Route path="/upload" component={UploadSection} />
-            <Route path="/view" component={ViewSection} />
+            <Route exact path="/articles" component={ArticleSection} />
+            <Route path="/articles/:paperId" component={ArticleDetail}/>
           </Switch>
         </div>
         <Footer />
