@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from '../api/reviewApi';
 import { Spinner } from 'reactstrap';
-import ArticleDetail from './ArticleDetail';
 
 const ViewSection = (props) => {
 
 	const { match } = props;
 	
-	const [papers, setPapers] = useState([]);
+	const [articles, setArticles] = useState([]);
 
   useEffect(() => {
   	axios.get("/view")
 		.then(res => { 
-    	setPapers(res.data);
+    	setArticles(res.data);
 		})
 		.catch(err => { 
 		  console.log('Failed to fetch file!');
@@ -23,7 +22,7 @@ const ViewSection = (props) => {
 	return (
 		<div>
 			<h2 className="text-center mt-5" style={{fontSize:'3.5vw'}}>List of articles!</h2>
-	    { !papers.length ? 
+	    { !articles.length ? 
 	    	(
 	    		<div className="text-center">
 	    			<Spinner color="primary" style={{ marginTop:'1rem', width: '3rem', height: '3rem' }} type="grow" />
@@ -32,15 +31,15 @@ const ViewSection = (props) => {
 	    	(
 	    	<ul className="list-group">
 		      {
-		        papers.map((paper) => (
+		        articles.map((article) => (
 		          <li
 		            className={
 		              "list-group-item list-group-item-info"
 		            }
-		            key = {paper._id}
+		            key = {article._id}
 		          >
-		            <Link to={`${match.url}/${paper._id}`}>
-			            {paper.name.split('-').pop()}
+		            <Link to={{pathname:`${match.url}/${article._id}`,state:{ article }}}>
+			            {article.name}
 			          </Link>
 		          </li>
 		        ))}
