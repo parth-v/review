@@ -7,6 +7,9 @@ import UploadSection from './components/UploadSection';
 import ArticleSection from './components/ArticleSection';
 import HomeSection from './components/HomeSection';
 import ArticleDetail from './components/ArticleDetail';
+import AdminSection from './components/AdminSection';
+import SignInSection from './components/SignInSection';
+import SignUpSection from './components/SignUpSection';
 import TopNav from './components/TopNav';
 import Footer from './components/Footer';
 
@@ -20,6 +23,9 @@ const App = () => {
             <Route path="/upload" component={UploadSection} />
             <Route exact path="/articles" component={ArticleSection} />
             <Route path="/articles/:paperId" component={ArticleDetail}/>
+            <Route path="/admin" component={AdminSection} />
+            <Route path="/signin" component={SignInSection} />
+            <Route path="/signup" component={SignUpSection} />
           </Switch>
         </div>
         <Footer />
