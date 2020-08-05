@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-const UserDetail = () => {
+const UserDetail = ({ location }) => {
 	const history = useHistory();
 	return (
 		<div>
@@ -13,8 +13,27 @@ const UserDetail = () => {
 					>
 						Go back
 					</button>
-					<span>User Details</span>
+					User Details
 				</h2>
+			</div>
+			<div className="alert alert-primary">
+				<h3>
+				Name: { location.state.user.email }
+				</h3>
+			</div>
+			<div className="alert alert-primary">
+				<h3>
+					Role: { location.state.user.role }
+				</h3>
+			</div>
+			<div className="alert alert-primary">
+				<h3>
+					Articles: { 
+						(!location.state.user.articles || !location.state.user.articles.length) 
+							? <span>None </span> 
+							: location.state.user.articles 
+					}
+				</h3>
 			</div>
 		</div>
 	);
