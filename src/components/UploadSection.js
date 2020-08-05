@@ -89,7 +89,7 @@ const UploadSection = () => {
 	}
 
 	return (
-		<div>
+		<div className="jumbotron border border-primary">
 			<h2 className="text-center">Upload a New Article</h2>
 			<div className="form-group">
 				<label>Article Name: </label>

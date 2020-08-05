@@ -4,7 +4,7 @@ import fermat from '../img/fermat.jpg';
 
 const HomeSection = () => {
 	return (
-		<>
+		<div className="jumbotron border border-primary">
 		<div className="text-center">
 			<h1 style={{fontSize:'3.5vw'}} >Welcome to E-Fermat</h1>
 			<img src={fermat} width="70%" alt="fermat"/>
@@ -12,7 +12,7 @@ const HomeSection = () => {
 		
 		{//<ArticleSection match={{path: "view"}} />
 	}
-		</>
+		</div>
 	);
 };
 

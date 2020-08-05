@@ -13,7 +13,7 @@ const PaperSection = ({ location }) => {
 
 	useEffect( () => {
     setLoading(true);
-    fetch("http://localhost:8000/viewComments/aa")
+    fetch("http://localhost:8000/comments/aa")
       .then(res => res.json())
       .then(res => {
       	setComments(res);
@@ -32,7 +32,7 @@ const PaperSection = ({ location }) => {
 	const loadingSpin = loading ? "App-logo Spin" : "App-logo";
 	return (
 		<div>
-			<div className="card bg-light border-primary">
+			<div className="jumbotron border border-primary">
 				<h1 className="card-header">Article Details:</h1>
 				<div className="card-body">
 					<button 

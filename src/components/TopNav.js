@@ -5,7 +5,7 @@ const TopNav = () => {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
       <li className="navbar-brand">
-       <Link to={"/"} className="nav-link">
+       <Link to={"/"} className="navbar-brand">
           E-Fermat
         </Link>
       </li>
