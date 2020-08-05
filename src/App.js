@@ -11,11 +11,13 @@ import AdminSection from './components/AdminSection';
 import SignInSection from './components/SignInSection';
 import SignUpSection from './components/SignUpSection';
 import PrivateRoute from './components/PrivateRoute';
+import { Provider as AuthProvider } from './context/AuthContext';
 import TopNav from './components/TopNav';
 import Footer from './components/Footer';
 
 const App = () => {
   return (
+    <AuthProvider>
       <div>
         <TopNav />
         <div className="container my-3">
@@ -31,6 +33,7 @@ const App = () => {
         </div>
         <Footer />
       </div>
+    </AuthProvider>
   );
 }
 
