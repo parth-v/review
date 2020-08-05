@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import logoImg from "../img/avatar.jpg";
-import { Card, Logo, Form, Input, Button, Title, Error } from "../components/StyledComps";
+import { Card, Logo, Form, Input, Button, Title } from "../components/StyledComps";
 import { Context as AuthContext } from '../context/AuthContext';
 
 const Login = (props) => {
@@ -12,6 +12,7 @@ const Login = (props) => {
   let location = useLocation();
 
   let { from } = location.state || { from: { pathname: "/" } };
+  //console.log(from);
 
   useEffect(() => {
     clearErr();
@@ -55,7 +56,7 @@ const Login = (props) => {
       </Form>
       <Link to="/signup">Don't have an account?</Link>
         { 
-          state.errMessage &&<Error>{state.errMessage}</Error>
+          state.errMessage &&<p className="alert alert-danger">{state.errMessage}</p>
         }
     </Card>
   );

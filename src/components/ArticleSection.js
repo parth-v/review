@@ -21,7 +21,7 @@ const ViewSection = (props) => {
 
 	return (
 		<div className="jumbotron border border-primary">
-			<h2 className="text-center mt-2" style={{fontSize:'3.5vw'}}>List of articles!</h2>
+			<h2 className="text-center alert alert-primary">List of articles!</h2>
 	    { !articles.length ? 
 	    	(
 	    		<div className="text-center">

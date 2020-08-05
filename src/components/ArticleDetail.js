@@ -13,10 +13,9 @@ const PaperSection = ({ location }) => {
 
 	useEffect( () => {
     setLoading(true);
-    fetch("http://localhost:8000/comments/aa")
-      .then(res => res.json())
+    axios.get(`comments/${article._id}`)
       .then(res => {
-      	setComments(res);
+      	setComments(res.data);
       	setLoading(false);
       })
       .catch(err => {
@@ -33,7 +32,7 @@ const PaperSection = ({ location }) => {
 	return (
 		<div>
 			<div className="jumbotron border border-primary">
-				<h1 className="card-header">Article Details:</h1>
+				<h1 className="alert alert-primary">Article Details:</h1>
 				<div className="card-body">
 					<button 
 						onClick={ () => {
@@ -56,9 +55,9 @@ const PaperSection = ({ location }) => {
 					>
 						Download
 					</button>
-					<h2 className="card-header mt-2">Name</h2>
+					<h2 className="alert alert-primary mt-3">Name</h2>
 					<p>{article.name}</p>
-					<h2 className="card-header mt-2">Abstract</h2>
+					<h2 className="alert alert-primary mt-3">Abstract</h2>
 					<p>{article.abstract}</p>
 				</div>
 			</div>

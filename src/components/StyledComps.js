@@ -51,9 +51,4 @@ const Logo = styled.img`
   border-radius: 0.5rem;
 `;
 
-const Error = styled.div`
-  margin: 1rem;
-  color: red;
-`;
-
-export { Form, Input, Title, Button, Logo, Card, Error };
+export { Form, Input, Title, Button, Logo, Card };

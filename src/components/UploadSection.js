@@ -20,7 +20,7 @@ const UploadSection = () => {
 
 	let onClickHandler = () => {
 		if(!file || !name || !abstract){
-			return setErr("Enter all details!"); 
+			return setErr("Please enter all the details!"); 
 		}
     const data = new FormData();
     for(let i = 0; i < file.length; i++) {
@@ -89,10 +89,10 @@ const UploadSection = () => {
 	}
 
 	return (
-		<div className="jumbotron border border-primary">
-			<h2 className="text-center">Upload a New Article</h2>
-			<div className="form-group">
-				<label>Article Name: </label>
+		<div className="jumbotron border border-primary text-center">
+			<h2 className="alert alert-primary">Upload a New Article</h2>
+			<div className=" text-left form-group">
+				<label className="alert alert-primary">Article Name: </label>
 				<input 
 					className="form-control"
 					onChange = {e => setName(e.target.value)}
@@ -101,8 +101,8 @@ const UploadSection = () => {
 					type = "text"
 				/>
 			</div>
-			<div className="form-group">
-				<label > Article Abstract: </label>
+			<div className="text-left form-group">
+				<label className="alert alert-primary"> Article Abstract: </label>
 				<textarea 
 					className="form-control"
 	        onChange={e => setAbstract(e.target.value)}
@@ -111,7 +111,7 @@ const UploadSection = () => {
 	        rows="5"
 	      />
 	    </div>
-			<p className="text-center">Upload Files: </p>
+			<label className="alert alert-primary">Upload Files: </label>
 			<div className="container d-flex justify-content-center">
 				<div style={{width: '80%'}}>
 		      <form method="post" action="#" id="#">
@@ -125,7 +125,7 @@ const UploadSection = () => {
 				</div>
 			</div>
 			{
-				err && <p className="text-danger text-center m-3">{err}</p>
+				err && <p className="alert alert-danger text-center mt-3">{err}</p>
 			}
 		</div>
 	);

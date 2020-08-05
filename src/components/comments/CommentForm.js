@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from '../../api/reviewApi';
 
 export default class CommentForm extends Component {
   constructor(props) {
@@ -39,24 +40,14 @@ export default class CommentForm extends Component {
     this.setState({ error: "", loading: true });
 
     let { comment } = this.state;
-    fetch("http://localhost:8000/comment", {
-      method: "post",
-      body: JSON.stringify(comment),
-      headers: {"Content-Type": "application/json"}
-    })
-      .then(res => res.json())
+    axios.post("comment", { comment })
       .then(res => {
-        if (res.error) {
-          this.setState({ loading: false, error: res.error });
-        } else {
-          comment.time = res.time;
-          this.props.addComment(comment);
+        this.props.addComment(res.data);
 
-          this.setState({
-            loading: false,
-            comment: { ...comment, message: "" }
-          });
-        }
+        this.setState({
+          loading: false,
+          comment: { ...comment, message: "" }
+        });
       })
       .catch(err => {
         this.setState({
