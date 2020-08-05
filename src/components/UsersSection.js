@@ -1,9 +1,10 @@
 import React, { useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 import axios from '../api/reviewApi';
 
-const UsersSection = () => {
+const UsersSection = ({match}) => {
 	const [users, setUsers] = useState([]);
-	
+	console.log(match);
 	useEffect(() => {
 		axios.get("/users")
 		.then(res => setUsers(res.data))
@@ -11,8 +12,8 @@ const UsersSection = () => {
 	},[]);
 
 	return (
-		<div>
-			<h1>List of Users</h1>
+		<div >
+			<h2 className="alert alert-primary">List of Users</h2>
 			{
 				!users.length 
 					? (<div>Loading</div>)
@@ -24,7 +25,9 @@ const UsersSection = () => {
 										className="list-group-item list-group-item-info" 
 										key = {user._id}
 									>
-										{user.role}: {user.email} 
+										<Link to={{pathname:`${match.url}/${user._id}`, state:{ user }}}>
+											{user.role}: {user.email} 
+										</Link>
 									</li>
 
 								))

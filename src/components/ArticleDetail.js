@@ -57,6 +57,10 @@ const PaperSection = ({ location }) => {
 					</button>
 					<h2 className="alert alert-primary mt-3">Name</h2>
 					<p>{article.name}</p>
+					<h2 className="alert alert-primary mt-3">Status</h2>
+					<p>{article.status}</p>
+					<h2 className="alert alert-primary mt-3">Author Email</h2>
+					<p>{article.authorEmail}</p>
 					<h2 className="alert alert-primary mt-3">Abstract</h2>
 					<p>{article.abstract}</p>
 				</div>
@@ -72,18 +76,20 @@ const PaperSection = ({ location }) => {
             </span>
           </h1>
         </header>
-        <div className="row">
-          <div className="col-4 pt-3 border-right">
-            <h6>Say something about the article</h6>
-            <CommentForm addComment={addComment} />
-          </div>
-          <div className="col-8 pt-3 bg-white">
-            <CommentList
-              loading={loading}
-              comments={comments}
-            />
-          </div>
-        </div>
+        <div className="container border border-primary rounded my-2">
+	        <div className="row">
+	          <div className="col-sm-4 pt-3 border-right border-primary">
+	            <h6>Say something about the article</h6>
+	            <CommentForm addComment={addComment} />
+	          </div>
+	          <div className="col-sm-8 pt-3 bg-white">
+	            <CommentList
+	              loading={loading}
+	              comments={comments}
+	            />
+	          </div>
+	        </div>
+      	</div>
       </div>
 		</div>
 	);

@@ -23,7 +23,7 @@ const App = () => {
         <div className="container my-3">
           <Switch>
             <Route exact path="/" component={HomeSection} />
-            <Route path="/upload" component={UploadSection} />
+            <PrivateRoute path="/upload" component={UploadSection} />
             <Route exact path="/articles" component={ArticleSection} />
             <Route path="/articles/:paperId" component={ArticleDetail}/>
             <PrivateRoute path="/admin" component={AdminSection} />

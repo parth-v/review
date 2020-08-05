@@ -1,27 +1,31 @@
 import React, { useContext } from "react";
-import { Button } from "../components/StyledComps";
 import { Context as AuthContext } from '../context/AuthContext';
-import { useHistory } from 'react-router-dom';
+import { useHistory,Route, Switch } from 'react-router-dom';
 import UsersSection from './UsersSection';
+import UserDetail from './UserDetail';
 
-function Admin(props) {
+const Admin = ({ match }) => {
   const { signout } = useContext(AuthContext);
   const history = useHistory();
   console.log(history);
   return (
-    <div>
-      <h1>Admin Section</h1>
-      <div className="w-25">
-      	<Button 
+    <div className="jumbotron border border-primary">
+      <h1 className="alert alert-primary text-center">
+      	Admin Section
+      	<button className="btn btn-primary float-sm-right my-auto"
       		onClick={()=>{
       			signout();
       			history.go(0);
       		}}
       	>
       		Sign Out
-      	</Button>
-    	</div>
-    	<UsersSection />
+      	</button>
+    	</h1>
+      
+    	<Switch>
+    		<Route path={`${match.url}/:id`} component={UserDetail}/>
+    		<Route component={UsersSection} />
+    	</Switch>
     </div>
   );
 }

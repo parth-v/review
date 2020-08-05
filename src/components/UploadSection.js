@@ -113,8 +113,8 @@ const UploadSection = () => {
 	    </div>
 			<label className="alert alert-primary">Upload Files: </label>
 			<div className="container d-flex justify-content-center">
-				<div style={{width: '80%'}}>
-		      <form method="post" action="#" id="#">
+				<div style={{width: '100%'}}>
+		      <form method="post" action="#">
             <div className="form-group files">
               <input type="file" style={{cursor: 'pointer'}} accept=".pdf, .docx, .doc" name="file" multiple onChange={onChangeHandler}/>
             </div>

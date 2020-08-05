@@ -15,13 +15,13 @@ const TopNav = () => {
       <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item">
-            <Link to={"/upload"} className="nav-link">
-              Upload
-            </Link>
-          </li>
-          <li className="nav-item">
             <Link to={"/articles"} className="nav-link">
               Articles
+            </Link>
+          </li>
+           <li className="nav-item">
+            <Link to={"/upload"} className="nav-link">
+              Upload
             </Link>
           </li>
           <li className="nav-item">
