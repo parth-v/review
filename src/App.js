@@ -11,6 +11,8 @@ import AdminSection from './components/AdminSection';
 import SignInSection from './components/SignInSection';
 import SignUpSection from './components/SignUpSection';
 import PrivateRoute from './components/PrivateRoute';
+import ProfileSection from './components/ProfileSection';
+import InitiateAuth from './components/InitiateAuth';
 import { Provider as AuthProvider } from './context/AuthContext';
 import TopNav from './components/TopNav';
 import Footer from './components/Footer';
@@ -19,11 +21,13 @@ const App = () => {
   return (
     <AuthProvider>
       <div>
+        <InitiateAuth />
         <TopNav />
         <div className="container my-3">
           <Switch>
             <Route exact path="/" component={HomeSection} />
             <PrivateRoute path="/upload" component={UploadSection} />
+            <PrivateRoute path="/profile" component={ProfileSection} />
             <Route exact path="/articles" component={ArticleSection} />
             <Route path="/articles/:paperId" component={ArticleDetail}/>
             <PrivateRoute path="/admin" component={AdminSection} />

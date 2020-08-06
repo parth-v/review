@@ -5,19 +5,17 @@ import { Card, Logo, Form, Input, Button, Title } from '../components/StyledComp
 import { Context as AuthContext } from '../context/AuthContext';
 
 const Signup = () => {
-  const { state, signup, clearErr, tryAutoSignIn } = useContext(AuthContext);
+  const { state, signup, clearErr } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let history = useHistory();
   let location = useLocation();
 	
 	let { from } = location.state || { from: { pathname: "/" } };
-	//console.log(from);
 
   useEffect(() => {
     clearErr();
-    tryAutoSignIn();
-    if(localStorage.token) {
+    if(state.token) {
       history.replace(from);
     }
   },[]);
@@ -27,20 +25,24 @@ const Signup = () => {
       <Title> Sign Up </Title>
       <Logo src={logoImg} />
       <Form>
+        {
+          // <Input
+          //         type="text"
+          //         value={name}
+          //         onChange= {e => setName(e.target.value)}
+        
+          //       />
+              }
         <Input
           type="email"
           value={email}
-          onChange={e => {
-            setEmail(e.target.value);
-          }}
+          onChange={e => setEmail(e.target.value)}}
           placeholder="Email"
         />
         <Input
           type="password"
           value={password}
-          onChange={e => {
-            setPassword(e.target.value);
-          }}
+          onChange={e => setPassword(e.target.value)}}
           placeholder="Password"
         />
         <Button 

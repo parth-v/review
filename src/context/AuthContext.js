@@ -4,13 +4,13 @@ import reviewApi from '../api/reviewApi';
 const authReducer = (state, action) => {
 	switch(action.type) {
 		case 'signin': 
-			return { errMessage: '', token: action.payload, role: "author" }; 
+			return { errMessage: '', token: action.payload.token, role: action.payload.user.role, user: action.payload.user }; 
 		case 'add_err': 
 			return { ...state, errMessage: action.payload };
 		case 'clear_err':
 			return { ...state, errMessage: '' }; 
 		case 'signout':
-			return { token: null, errMessage: '', role: "visitor" };
+			return { token: null, errMessage: '', role: "visitor", user: null };
 		default: 
 			return state;
 	};
@@ -18,8 +18,9 @@ const authReducer = (state, action) => {
 
 const tryAutoSignIn = dispatch => async () => {
 	const token = localStorage.getItem('token');
+	const user = JSON.parse(localStorage.getItem('user'));
 	if(token) {
-		dispatch({ type: 'signin', payload: token });
+		dispatch({ type: 'signin', payload: { token, user } });
 	} 
 };
 
@@ -42,8 +43,11 @@ const signup = (dispatch) => async ({ email, password }) => {
 	}
 	try {
 		const response = await reviewApi.post('/signup', { email, password });
-		await localStorage.setItem('token', response.data.token);
-		dispatch({ type: 'signin', payload: response.data.token });
+		const token = response.data.token;
+		const user = response.data.userDetail;
+		await localStorage.setItem('token', token);
+		await localStorage.setItem('user', JSON.stringify(user));
+		dispatch({ type: 'signin', payload: { token, user } });
 	} catch (err) {
 		dispatch({ type: 'add_err', payload: 'Something went wrong with Sign Up!' });
 	}
@@ -56,8 +60,12 @@ const signin = (dispatch) => async ({ email, password }) => {
 	}
 	try {
 		const response = await reviewApi.post('/signin', { email, password });
-		await localStorage.setItem('token',response.data.token);
-		dispatch({ type: 'signin', payload: response.data.token });
+		const token = response.data.token;
+		const user = response.data.userDetail;
+		console.log('token:', token, '  user:', user );
+		await localStorage.setItem('token', token);
+		await localStorage.setItem('user', JSON.stringify(user));
+		dispatch({ type: 'signin', payload: { token, user } });
 	} catch (err) {
 		dispatch({ type: 'add_err', payload: "Something went wrong with Sign In!"});
 	}
@@ -66,6 +74,7 @@ const signin = (dispatch) => async ({ email, password }) => {
 const signout = (dispatch) => async () => {
 	try {
 		await localStorage.removeItem('token');
+		await localStorage.removeItem('user');
 		dispatch({ type: 'signout' });
 	} catch(err) {
 		console.log(err);
@@ -74,5 +83,5 @@ const signout = (dispatch) => async () => {
 export const { Context, Provider } = createDataContext(
 	authReducer,
 	{ signup, signin, signout, clearErr, tryAutoSignIn },
-	{ token: null, errMessage: '',role: "visitor" }
+	{ token: null, errMessage: '',role: "visitor", user: null }
 );

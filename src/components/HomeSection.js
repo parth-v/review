@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import fermat from '../img/fermat.jpg';
 //import ArticleSection from './ArticleSection';
+//import { Context as AuthContext } from '../context/AuthContext';
 
 const HomeSection = () => {
+	//const { state } = useContext(AuthContext);
 	return (
 		<div className="jumbotron border border-primary">
 		<div className="text-center">
