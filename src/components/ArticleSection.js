@@ -25,7 +25,7 @@ const ViewSection = (props) => {
 	    { !articles.length ? 
 	    	(
 	    		<div className="text-center">
-	    			<Spinner color="primary" style={{ marginTop:'1rem', width: '3rem', height: '3rem' }} type="grow" />
+	    			<Spinner color="primary" style={{ marginTop:'1rem', width: '3rem', height: '3rem' }} />
 	    		</div>
 	    	) :
 	    	(
