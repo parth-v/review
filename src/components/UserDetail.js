@@ -18,7 +18,12 @@ const UserDetail = ({ location }) => {
 			</div>
 			<div className="alert alert-primary">
 				<h3>
-					Name: { location.state.user.email }
+					Email: { location.state.user.email }
+				</h3>
+			</div>
+			<div className="alert alert-primary">
+				<h3>
+					Name: { location.state.user.name }
 				</h3>
 			</div>
 			<div className="alert alert-primary">

@@ -6,7 +6,7 @@ import { Route, Redirect } from 'react-router-dom';
 const ProfileSection = ({ match }) => {
 	const { state } = useContext(AuthContext);
 	const user = state.user;
-
+	//console.log(state.user);
 	return (
 		<>
 			<Redirect to={{pathname:`${match.url}/${state.user._id}`, state: { user } }} />

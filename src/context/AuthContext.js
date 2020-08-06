@@ -36,13 +36,13 @@ const clearErr = dispatch => () => {
 	dispatch({ type: 'clear_err' });
 };
 
-const signup = (dispatch) => async ({ email, password }) => {
-	if(!email || !password)
+const signup = (dispatch) => async ({ email, password, name }) => {
+	if(!email || !password || !name)
 	{
-		return dispatch({ type: 'add_err', payload: "Please fill both fields!"});
+		return dispatch({ type: 'add_err', payload: "Please fill all the fields!"});
 	}
 	try {
-		const response = await reviewApi.post('/signup', { email, password });
+		const response = await reviewApi.post('/signup', { email, password, name });
 		const token = response.data.token;
 		const user = response.data.userDetail;
 		await localStorage.setItem('token', token);

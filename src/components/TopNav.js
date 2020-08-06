@@ -1,7 +1,10 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { Context as AuthContext } from '../context/AuthContext';
 
 const TopNav = () => {
+  const { signout } = useContext(AuthContext);
+
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
       <li className="navbar-brand">
@@ -43,6 +46,9 @@ const TopNav = () => {
             <Link to={"/signup"} className="nav-link">
               Sign Up
             </Link>
+          </li>
+          <li onClick={signout} className="nav-link" style={{cursor: 'pointer'}}>
+            Sign Out
           </li>
         </ul>
       </div>

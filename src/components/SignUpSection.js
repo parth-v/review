@@ -8,6 +8,7 @@ const Signup = () => {
   const { state, signup, clearErr } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   let history = useHistory();
   let location = useLocation();
 	
@@ -25,29 +26,27 @@ const Signup = () => {
       <Title> Sign Up </Title>
       <Logo src={logoImg} />
       <Form>
-        {
-          // <Input
-          //         type="text"
-          //         value={name}
-          //         onChange= {e => setName(e.target.value)}
-        
-          //       />
-              }
+        <Input
+          type="text"
+          value={name}
+          onChange= {e => setName(e.target.value)}
+          placeholder="Name"
+        />
         <Input
           type="email"
           value={email}
-          onChange={e => setEmail(e.target.value)}}
+          onChange={e => setEmail(e.target.value)}
           placeholder="Email"
         />
         <Input
           type="password"
           value={password}
-          onChange={e => setPassword(e.target.value)}}
+          onChange={e => setPassword(e.target.value)}
           placeholder="Password"
         />
         <Button 
         	onClick = { async() => {
-           	await signup({email, password});
+           	await signup({email, password, name});
             if(localStorage.token) {
               history.replace(from);
             }

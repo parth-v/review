@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { Context as AuthContext } from '../context/AuthContext';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
-	const isAuthenticated = localStorage.token ? true : false;
-	console.log(localStorage.token, isAuthenticated);
+	const { state } = useContext(AuthContext);
+	const isAuthenticated = state.token ? true : false;
+	//console.log(state, isAuthenticated);
 	return (
 		<Route 
 			{...rest}
