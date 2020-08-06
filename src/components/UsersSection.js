@@ -26,7 +26,7 @@ const UsersSection = ({match}) => {
 										key = {user._id}
 									>
 										<Link to={{pathname:`${match.url}/${user._id}`, state:{ user }}}>
-											{user.role}: {user.email} 
+											{user.name} 
 										</Link>
 									</li>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
+
 const UserDetail = ({ location }) => {
 	const history = useHistory();
 	return (
@@ -16,30 +17,30 @@ const UserDetail = ({ location }) => {
 					User Details
 				</h2>
 			</div>
-			<div className="alert alert-primary">
-				<h3>
-					Email: { location.state.user.email }
-				</h3>
-			</div>
-			<div className="alert alert-primary">
-				<h3>
-					Name: { location.state.user.name }
-				</h3>
-			</div>
-			<div className="alert alert-primary">
-				<h3>
-					Role: { location.state.user.role }
-				</h3>
-			</div>
-			<div className="alert alert-primary">
-				<h3>
-					Articles: { 
+			<table className="table table-success text-center">
+				<thead>
+				<th>Email</th> 
+				<th>{ location.state.user.email }</th>
+				</thead>
+				<thead>
+				<th> Name</th>
+				<th>{ location.state.user.name }</th>
+				</thead>
+				<thead>
+				<th>Role</th>
+				<th>{ location.state.user.role }</th>
+				</thead>
+				<thead>
+				<th>Articles</th>
+				<th>
+					{ 
 						(!location.state.user.articles || !location.state.user.articles.length) 
 							? <span>None </span> 
-							: location.state.user.articles 
+							: location.state.user.articles.length 
 					}
-				</h3>
-			</div>
+				</th>
+				</thead>
+			</table>
 		</div>
 	);
 };

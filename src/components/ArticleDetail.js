@@ -55,13 +55,13 @@ const PaperSection = ({ location }) => {
 					>
 						Download
 					</button>
-					<h2 className="alert alert-primary mt-3">Name</h2>
+					<h3 className="alert alert-primary mt-3">Name</h3>
 					<p>{article.name}</p>
-					<h2 className="alert alert-primary mt-3">Status</h2>
-					<p>{article.status}</p>
-					<h2 className="alert alert-primary mt-3">Author Email</h2>
+					<h3 className="alert alert-primary mt-3">Status</h3>
+					<p className="btn btn-dark disabled">{article.status}</p>
+					<h3 className="alert alert-primary mt-3">Author Email</h3>
 					<p>{article.authorEmail}</p>
-					<h2 className="alert alert-primary mt-3">Abstract</h2>
+					<h3 className="alert alert-primary mt-3">Abstract</h3>
 					<p>{article.abstract}</p>
 				</div>
 			</div>
