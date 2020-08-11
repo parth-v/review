@@ -5,31 +5,37 @@ const UserDetail = ({ location }) => {
 	const history = useHistory();
 	return (
 		<div>
-			<div className="mt-3">
-				<h2 className="alert alert-primary text-center">
+			<div className="mt-3">	
+				<h2 className="alert alert-primary d-flex flex-column">
 					<button 
-						className="btn btn-primary float-left"
-						onClick = { history.goBack }
+						className="btn btn-primary align-self-start"
+						onClick = { history.goBack}
 					>
 						Go back
 					</button>
-					User Details
+					<div className="align-self-center">
+						User Details
+					</div>	
 				</h2>
 			</div>
 			<table className="table table-success text-center">
 				<thead>
+				<tr>
 				<th>Email</th> 
 				<th>{ location.state.user.email }</th>
+				</tr>
 				</thead>
 				<thead>
+				<tr>
 				<th> Name</th>
 				<th>{ location.state.user.name }</th>
+				</tr>
 				</thead>
-				<thead>
+				<thead><tr>
 				<th>Role</th>
 				<th>{ location.state.user.role }</th>
-				</thead>
-				<thead>
+				</tr></thead>
+				<thead><tr>
 				<th>Articles</th>
 				<th>
 					{ 
@@ -37,7 +43,7 @@ const UserDetail = ({ location }) => {
 							? <span>None </span> 
 							: location.state.user.articles.length 
 					}
-				</th>
+				</th></tr>
 				</thead>
 			</table>
 		</div>

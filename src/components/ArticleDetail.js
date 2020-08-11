@@ -32,7 +32,7 @@ const PaperSection = ({ location }) => {
 	return (
 		<div>
 			<div className="jumbotron border border-primary">
-				<h1 className="alert alert-primary">Article Details:</h1>
+				<h1 className="alert alert-primary text-center">Article Details</h1>
 				<div className="card-body">
 					<button 
 						onClick={ () => {
@@ -53,12 +53,12 @@ const PaperSection = ({ location }) => {
 						} 
 						className="btn btn-primary"
 					>
-						Download
+						Download Pdf &#9113;
 					</button>
 					<h3 className="alert alert-primary mt-3">Name</h3>
 					<p>{article.name}</p>
 					<h3 className="alert alert-primary mt-3">Status</h3>
-					<p className="btn btn-dark disabled">{article.status}</p>
+					<p className="btn btn-success disabled">{article.status}</p>
 					<h3 className="alert alert-primary mt-3">Author Email</h3>
 					<p>{article.authorEmail}</p>
 					<h3 className="alert alert-primary mt-3">Abstract</h3>
