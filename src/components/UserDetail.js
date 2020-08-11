@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-
 const UserDetail = ({ location }) => {
 	const history = useHistory();
 	return (
@@ -10,7 +9,7 @@ const UserDetail = ({ location }) => {
 				<h2 className="alert alert-primary text-center">
 					<button 
 						className="btn btn-primary float-left"
-						onClick = {history.goBack}
+						onClick = { history.goBack }
 					>
 						Go back
 					</button>

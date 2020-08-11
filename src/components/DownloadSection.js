@@ -1,8 +1,8 @@
 import React from 'react';
 
 const DownloadSection = () => {
-
-	return (<div>
+	return (
+		<div>
 			<div>
 				<h2 className="text-center mt-5" style={{fontSize:'3.5vw'}}>List of articles!</h2>
 		    { !papers.length ? 
@@ -49,10 +49,9 @@ const DownloadSection = () => {
 			    )
 		 	  }
 		  </div>
-
+		  <Route path={`${match.path}:productId`} component={DownloadSection}/>
 		</div>
-
-		<Route path={`${match.path}:productId`} component={DownloadSection}/>	);
+	);
 };
 
 export default DownloadSection;

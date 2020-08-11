@@ -17,7 +17,7 @@ export default function Comment(props) {
         <small className="float-right text-muted">{time}</small>
         <h6 className="float-left mt-0 mb-1 text-muted">{name}</h6>
         <br/>
-        <p className="float-left">{message}</p>
+        <p className="float-left text-left">{message}</p>
       </div>
     </div>
   );

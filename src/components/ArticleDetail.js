@@ -70,7 +70,7 @@ const PaperSection = ({ location }) => {
         <header className="App-header">
           <img src={logo} className={loadingSpin} alt="logo" />
           <h1 className="App-title">
-            Comments
+            Comment Section
             <span className="px-2" role="img" aria-label="Chat">
               💬
             </span>

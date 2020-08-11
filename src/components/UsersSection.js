@@ -1,10 +1,10 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from '../api/reviewApi';
 
-const UsersSection = ({match}) => {
+const UsersSection = ({ match }) => {
 	const [users, setUsers] = useState([]);
-	console.log(match);
+	//console.log(match);
 	useEffect(() => {
 		axios.get("/users")
 		.then(res => setUsers(res.data))
