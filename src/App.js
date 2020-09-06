@@ -20,10 +20,10 @@ import Footer from './components/Footer';
 const App = () => {
   return (
     <AuthProvider>
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <InitiateAuth />
         <TopNav />
-        <div className="container my-3">
+        <div className="container my-3" style={{ flex: 1}}>
           <Switch>
             <Route exact path="/" component={HomeSection} />
             <PrivateRoute path="/upload" component={UploadSection} />

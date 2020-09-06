@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import logo from "../img/logo.svg";
 import axios from '../api/reviewApi';
 import CommentList from "./comments/CommentList";
 import CommentForm from "./comments/CommentForm";
@@ -28,7 +27,6 @@ const PaperSection = ({ location }) => {
     setComments([comment, ...comments]);
   }
 
-	const loadingSpin = loading ? "App-logo Spin" : "App-logo";
 	return (
 		<div>
 			<div className="jumbotron border border-primary">
@@ -66,17 +64,16 @@ const PaperSection = ({ location }) => {
 				</div>
 			</div>
 			
-      <div className="App container bg-light border border-primary rounded shadow">
-        <header className="App-header">
-          <img src={logo} className={loadingSpin} alt="logo" />
-          <h1 className="App-title">
+      <div className="comment container bg-light border border-primary rounded shadow">
+        <header className="comment-header">
+          <h1 className="comment-title">
             Comment Section
             <span className="px-2" role="img" aria-label="Chat">
               💬
             </span>
           </h1>
         </header>
-        <div className="container border border-primary rounded my-2">
+        <div className="container text-center border border-primary rounded my-2">
 	        <div className="row">
 	          <div className="col-sm-4 pt-3 border-right border-primary">
 	            <h6>Say something about the article</h6>

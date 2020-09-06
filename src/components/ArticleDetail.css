@@ -1,17 +1,9 @@
-.App {
+.comment {
     padding-top: 1rem;
     margin: 2rem auto;
 }
 
-.App-logo {
-    height: 80px;
-}
-
-.Spin {
-    animation: App-logo-spin infinite 2s linear;
-}
-
-.App-header {
+.comment-header {
     text-align: center;
     background-color: var(--secondary);
     padding: 20px;
@@ -19,20 +11,7 @@
     border-radius: 0.3rem;
 }
 
-.App-title {
+.comment-title {
     font-size: 1.5em;
-    color: black;  
-}
-
-.App-intro {
-    font-size: large;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+    color: white;  
 }
